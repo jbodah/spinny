@@ -44,6 +44,8 @@ Spinny comes with several clients out of the box:
 All of these can be used by loading the respective client into an IRB shell.
 Spinny also provides some executables to make it easier to work with common use cases.
 
+### spinny-push
+
 `spinny-push` will read a list of filenames from ARGV or STDIN and use `Spinny::LoadClient` to push them to the server:
 
 ```sh
@@ -54,17 +56,23 @@ spinny-push file_one.rb file_two.rb
 ls test/*_test.rb | spinny-push
 ```
 
+### spinny-listen
+
 `spinny-listen` will read a list of directories from ARGV or STDIN and use `Spinny::ListenClient` to watch for file changes and then will push them to the server via `Spinny::LoadClient`
 
 ```sh
 spinny-listen test
 ```
 
+### spinny-guard
+
 `spinny-guard` gives you [guard](https://github.com/guard/guard)-like functionality. This spins up `Spinny::ListenClient` and a `Spinny::Server` for you in one convenient command
 
 ```sh
 spinny-guard
 ```
+
+### spinny-stop
 
 Finally, there is `spinny-stop` for killing all of your Spinny processes:
 
