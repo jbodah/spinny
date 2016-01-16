@@ -1,0 +1,16 @@
+#! /usr/bin/env ruby
+
+$: << File.expand_path('../../lib', __FILE__)
+require 'spinny'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: spinny-serve [options] ENV_FILE'
+
+  opts.on('-I[PATHS]', '--include=[PATHS]', 'Colon-separated list of directories to add to the $LOAD_PATH') do |paths|
+    options[:load_paths] = paths.split(':')
+  end
+end.parse!
+
+Spinny.serve! ARGV[0], options[:load_paths]
