@@ -9,17 +9,17 @@ It differs from those projects in the sense that it is designed to be lighter an
 create special cases for certain technologies like Rails or particular test runners.
 Small, light, and modular is the name of the game.
 
-## Installation
-
-```sh
-gem install spinny_rb
-```
-
 ## How It Works
 
 Spinny works using a client-server model.
 The server will pre-load some code that you give it and then start listening on a TCP port.
 When it receives a connection it will fork off new process and run the code passed in the TCP message.
+
+## Installation
+
+```sh
+gem install spinny_rb
+```
 
 ## Usage
 
