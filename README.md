@@ -85,3 +85,4 @@ spinny-stop
 * Add regexp for spinny-listen
 * Add spinny-reload for reloading the server
 * Add spinny-reload for listening and reloading the server when certain things happen
+* Add README docs for doing typical spring stuff (rails s, rails c, rake)
