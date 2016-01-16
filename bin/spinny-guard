@@ -27,5 +27,4 @@ OptionParser.new do |opts|
 end.parse!
 
 system "#{bin_path}/spinny-listen -d #{options[:listen]}"
-puts "#{bin_path}/spinny-serve -I#{options[:load_paths]} #{options[:env]}"
 system "#{bin_path}/spinny-serve -I#{options[:load_paths]} #{options[:env]}"
