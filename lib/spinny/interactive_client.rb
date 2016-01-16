@@ -2,10 +2,6 @@ module Spinny
   # An simple REPL that will allow you to push code to
   # run on a Spinny::Server
   class InteractiveClient
-    def self.start!
-      new.start!
-    end
-
     def initialize
       @connection = Server.connect
     end

@@ -2,5 +2,12 @@
 
 $: << File.expand_path('../../lib', __FILE__)
 require 'spinny'
+require 'optparse'
 
-Spinny::LoadClient.start!
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: spinny-push FILE1 FILE2 ...'
+end.parse!
+
+filepaths = ARGV.empty? ? STDIN.read.split("\n") : ARGV
+Spinny::LoadClient.new(filepaths).start!

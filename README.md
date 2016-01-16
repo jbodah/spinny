@@ -1,36 +1,62 @@
 # Spinny
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spinny`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+a lightweight, unopinionated ruby application pre-loader
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'spinny'
+```rb
+gem install spinny_rb
 ```
 
-And then execute:
+## How It Works
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install spinny
+Spinny works using a client-server model.
+The server will pre-load some code that you give it and then start listening on a TCP port.
+When it receives a connection it will fork off new process and run the code passed in the TCP message.
 
 ## Usage
 
-TODO: Write usage instructions here
+First, you'll need to start your server.
+In this example, we spin up a `Spinny::Server` using the `spinny-serve` executable.
+We add the `test` directory to the load path and want the server to pre-load the `test_helper` file for us.
 
-## Development
+```sh
+spinny-serve -Itest test_helper
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Now we need a client to push code to our running server.
+Spinny comes with several clients out of the box:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+* `Spinny::InteractiveClient` is a REPL that will push arbitrary code to the server
+* `Spinny::LoadClient` takes a bunch of files and pushes them to the server to be loaded (e.g. running tests)
+* `Spinny::ListenClient` is inspired by Guard. It takes a bunch of filepaths and listens for OS file change events and then loads the changed files on the server
 
-## Contributing
+All of these can be used by loading the respective client into an IRB shell.
+Spinny also provides some executables to make it easier to work with common use cases.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/spinny.
+`spinny-push` will read a list of filenames from ARGV or STDIN and use `Spinny::LoadClient` to push them to the server:
 
+```sh
+# Read from ARGV
+spinny-push file_one.rb file_two.rb
+
+# Read from STDIN
+ls test/*_test.rb | spinny-push
+```
+
+`spinny-listen` will read a list of directories from ARGV or STDIN and use `Spinny::ListenClient` to watch for file changes and then will push them to the server via `Spinny::LoadClient`
+
+```sh
+spinny-listen test
+```
+
+Finally, there is `spinny-stop` for killing all of your Spinny processes:
+
+```sh
+spinny-stop
+```
+
+## TODO
+
+* Add daemonize option for spinny-listen
+* Add regexp for spinny-listen

@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'spinny/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "spinny"
+  spec.name          = "spinny_rb"
   spec.version       = Spinny::VERSION
   spec.authors       = ["Josh Bodah"]
   spec.email         = ["jb3689@yahoo.com"]
 
-  spec.summary       = %q{a lightweight, unopinionated application pre-loader}
+  spec.summary       = %q{a lightweight, unopinionated ruby application pre-loader}
   spec.description   = %q{spinny is influenced by projects like Spring and Spin and tries to make your workflow more efficient. It differs from those projects in the sense that it is not built around Rails}
   spec.homepage      = "https://github.com/jbodah/spinny"
 
