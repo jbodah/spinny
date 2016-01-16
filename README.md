@@ -4,7 +4,7 @@ a lightweight, unopinionated ruby application pre-loader
 
 ## Installation
 
-```rb
+```sh
 gem install spinny_rb
 ```
 
