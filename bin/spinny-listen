@@ -6,7 +6,7 @@ require 'optparse'
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = 'Usage: spinny-push DIR1 DIR2 ...'
+  opts.banner = 'Usage: spinny-listen DIR1 DIR2 ...'
 
   opts.on('-d', '--daemonize', 'Run the process in the background') do
     options[:daemonize] = true
