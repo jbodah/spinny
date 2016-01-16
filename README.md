@@ -68,7 +68,6 @@ spinny-stop
 
 ## TODO
 
-* Add daemonize option for spinny-listen
 * Add regexp for spinny-listen
 * Add spinny-reload for reloading the server
 * Add spinny-reload for listening and reloading the server when certain things happen
