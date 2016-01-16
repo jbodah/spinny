@@ -60,6 +60,12 @@ ls test/*_test.rb | spinny-push
 spinny-listen test
 ```
 
+`spinny-guard` gives you [guard](https://github.com/guard/guard)-like functionality. This spins up `Spinny::ListenClient` and a `Spinny::Server` for you in one convenient command
+
+```sh
+spinny-guard
+```
+
 Finally, there is `spinny-stop` for killing all of your Spinny processes:
 
 ```sh
@@ -71,4 +77,3 @@ spinny-stop
 * Add regexp for spinny-listen
 * Add spinny-reload for reloading the server
 * Add spinny-reload for listening and reloading the server when certain things happen
-* Add spinny-guard for starting up your typical Guard-style session
