@@ -2,6 +2,13 @@
 
 a lightweight, unopinionated ruby application pre-loader
 
+## Description
+
+Spinny is influenced by projects like Spring and Spin and tries to make your workflow more efficient.
+It differs from those projects in the sense that it is designed to be lighter and does not try to
+create special cases for certain technologies like Rails or particular test runners.
+Small, light, and modular is the name of the game.
+
 ## Installation
 
 ```sh
@@ -18,10 +25,13 @@ When it receives a connection it will fork off new process and run the code pass
 
 First, you'll need to start your server.
 In this example, we spin up a `Spinny::Server` using the `spinny-serve` executable.
-We add the `test` directory to the load path and want the server to pre-load the `test_helper` file for us.
 
 ```sh
+# Add the 'test' directory to the $LOAD_PATH and pre-load 'test_helper'
 spinny-serve -Itest test_helper
+
+# Pre-loading your typical Rails app
+spinny-serve config/environment
 ```
 
 Now we need a client to push code to our running server.
@@ -60,3 +70,4 @@ spinny-stop
 
 * Add daemonize option for spinny-listen
 * Add regexp for spinny-listen
+* Add spinny-reload for reloading the server

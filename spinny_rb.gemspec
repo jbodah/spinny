@@ -10,16 +10,12 @@ Gem::Specification.new do |spec|
   spec.email         = ["jb3689@yahoo.com"]
 
   spec.summary       = %q{a lightweight, unopinionated ruby application pre-loader}
-  spec.description   = %q{spinny is influenced by projects like Spring and Spin and tries to make your workflow more efficient. It differs from those projects in the sense that it is not built around Rails}
-  spec.homepage      = "https://github.com/jbodah/spinny"
-
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  spec.description   = %q{
+Spinny is influenced by projects like Spring and Spin and tries to make your workflow more efficient.
+It differs from those projects in the sense that it is designed to be lighter and does not try to
+create special cases for certain technologies like Rails or particular test runners.
+}
+  spec.homepage      = "https://github.com/jbodah/spinny_rb"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
